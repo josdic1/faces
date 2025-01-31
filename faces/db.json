@@ -1,0 +1,24 @@
+{
+   "faceItems": [
+      {
+         "name": "Jim",
+         "mood": "happy"
+      },
+      {
+         "name": "Ryann",
+         "mood": "mad"
+      },
+      {
+         "name": "Pilar",
+         "mood": "happy"
+      },
+      {
+         "name": "Reuben",
+         "mood": "sad"
+      },
+      {
+         "name": "Chino",
+         "mood": "sad"
+      }
+   ]
+}
