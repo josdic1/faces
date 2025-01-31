@@ -76,22 +76,44 @@ const init = () => {
          <input type='text' name='name' id='nameInput' placeholder='Enter new name...' />
          <label for='moodInput'> Mood </label>
          <input type='text' name='mood' id='moodInput' placeholder='Enter new mood...' />
-         <button type='submit' id='btnSubmit'> Create </button>`
+         <button type='submit' name='submit' id='btnSubmit'>Create</button>
+         <button type='button' name='clear' id='btnClear'>Clear</button>`
       faceForm.innerHTML = formHtml
    }
 
-   //form event listeners
+   //form event listeners for inputs
    faceForm.addEventListener('input', function (e) {
+      e.preventDefault()
       const inputs = faceForm.getElementsByTagName('input')
       for (let input of inputs) {
-         const { id, name, value } = input
+         const { name, value } = input
          formData = {
             ...formData,
             [name]: value
          }
-         console.log(formData)
       }
    })
+
+   faceForm.addEventListener('click', function (e) {
+      const { name } = e.target
+      if (name === 'clear') {
+         const nameField = document.getElementById('nameInput')
+         const moodField = document.getElementById('moodInput')
+         nameField.value = '';
+         moodField.value = '';
+      }
+   }
+   )
+
+
+   faceForm.addEventListener('submit', function (e) {
+      e.preventDefault()
+      console.log(formData)
+   })
+
+
+
+
 
 
 }
