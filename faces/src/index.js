@@ -52,6 +52,7 @@ const init = () => {
       ))
 
 
+
       //build face list and inject data
       faceList.innerHTML = `<table>
             <thead>
@@ -94,22 +95,69 @@ const init = () => {
       }
    })
 
+   //event listener clear button
    faceForm.addEventListener('click', function (e) {
       const { name } = e.target
-      if (name === 'clear') {
-         const nameField = document.getElementById('nameInput')
-         const moodField = document.getElementById('moodInput')
-         nameField.value = '';
-         moodField.value = '';
-      }
+      name === 'clear' ? clearForm() : ''
+   })
+
+   // clear form reusable
+   function clearForm() {
+      const nameField = document.getElementById('nameInput')
+      const moodField = document.getElementById('moodInput')
+      nameField.value = ''
+      moodField.value = ''
    }
-   )
 
-
+   // submit button event listener
    faceForm.addEventListener('submit', function (e) {
       e.preventDefault()
-      console.log(formData)
+      const payload = {
+         name: formData.name.toLowerCase(),
+         mood: formData.mood.toLowerCase()
+      }
+      if (inEditMode) {
+         console.log('form submit in editmode')
+      } else {
+         createClick(payload)
+         clearForm()
+      }
    })
+
+   // create new face POST
+   async function createClick(payload) {
+      try {
+         const r = await fetch(`http://localhost:3000/faceItems`, {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+         })
+         if (!r.ok) {
+            throw new Error('bad response')
+         }
+         const data = await r.json()
+         const updatedList = [...faces, data]
+         renderList(updatedList)
+
+      } catch (error) { console.error(error) }
+   }
+
+   // update face PATCH
+   async function updateClick() {
+      try {
+
+      } catch (error) { console.error(error) }
+   }
+
+   // delete face PATCH
+   async function updateClick() {
+      try {
+
+      } catch (error) { console.error(error) }
+   }
+
 
 
 
