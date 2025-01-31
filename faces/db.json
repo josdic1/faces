@@ -3,12 +3,12 @@
     {
       "id": "0b6e",
       "name": "paulo",
-      "mood": "happy"
+      "mood": "angry"
     },
     {
       "id": "2718",
       "name": "pierce",
-      "mood": "happy"
+      "mood": "sad"
     },
     {
       "id": "65ed",
@@ -18,7 +18,7 @@
     {
       "id": "eae1",
       "name": "joe-joe",
-      "mood": "happy"
+      "mood": "angry"
     }
   ]
 }

@@ -3,31 +3,17 @@
 const init = () => {
 
 
-   //dom elements
-   const app = document.getElementById("app")
-   const editMode = document.getElementById("edit-mode")
-   const formPart = document.getElementById("form-part")
-   const selectedPart = document.getElementById("selected-part")
+   //DOM elements
    const btnMenu = document.getElementById("btn-menu")
    const faceForm = document.getElementById("face-form")
    const faceItem = document.getElementById("face-item")
    const faceList = document.getElementById("face-list")
 
-   //stateful vars
+   // Stateful Variables
    let inEditMode = false
-
    let faces = []
-
-   let formData = {
-      name: '',
-      mood: ''
-   }
-
-   let selectedFace = {
-      id: '',
-      name: '',
-      mood: ''
-   }
+   let formData = { name: '', mood: '' }
+   let selectedFace = { id: '', name: '', mood: '' }
 
 
 
@@ -41,6 +27,7 @@ const init = () => {
          const data = await r.json()
          renderList(data)
          renderForm()
+         renderItem()
          faces = data
       } catch (error) { console.error(error) }
    }
@@ -91,6 +78,7 @@ const init = () => {
       if (btn === 'edi') {
          inEditMode = true
          populateForm(payload)
+         renderItem(payload.mood)
          selectedFace = {
             ...payload
          }
@@ -104,6 +92,22 @@ const init = () => {
          }
       }
    })
+
+   //render current mood emohi based off selected item
+
+   function renderItem(mood) {
+      switch (mood) {
+         case 'happy':
+            return faceItem.textContent = '🙂';
+         case 'sad':
+            return faceItem.textContent = '😔';
+         case 'angry':
+            return faceItem.textContent = '😠';
+         default:
+            return faceItem.textContent = '⌛'
+      }
+   }
+
 
    // creates object and routes it to POST/PATCH
    const populateForm = (face) => {
@@ -160,6 +164,7 @@ const init = () => {
          name: '',
          mood: ''
       }
+      renderItem()
    }
 
 
@@ -171,8 +176,8 @@ const init = () => {
       if (inEditMode) {
          const payload = {
             ...selectedFace,
-            name: nameField.value === selectedFace.name ? selectedFace.name : nameField.value,
-            mood: moodField.value === selectedFace.mood ? selectedFace.mood : moodField.value
+            name: nameField.value === selectedFace.name ? selectedFace.name.toLowerCase() : nameField.value.toLowerCase(),
+            mood: moodField.value === selectedFace.mood ? selectedFace.mood.toLowerCase() : moodField.value.toLowerCase()
          }
          updateClick(payload)
          clearForm()
@@ -221,8 +226,8 @@ const init = () => {
          }
          const data = await r.json()
          const updatedList = faces.map(face => face.id === data.id ? data : face)
-         renderList(updatedList)
-         clearForm()
+         fetchFaces(updatedList)
+
       } catch (error) { console.error(error) }
    }
 
@@ -237,6 +242,7 @@ const init = () => {
             throw new Error('error')
          }
          const updatedList = faces.filter(face => face.id !== objToDelete.id)
+         renderItem()
          renderList(updatedList)
          faces = updatedList
       } catch (error) { console.error(error) }
