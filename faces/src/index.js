@@ -1,8 +1,8 @@
-import greet from "./helper"
+
 
 const init = () => {
 
-   console.log(greet("Josh"))
+
    //dom elements
    const app = document.getElementById("app")
    const btnMenu = document.getElementById("btn-menu")
@@ -28,11 +28,70 @@ const init = () => {
             throw new Error('fetch error')
          }
          const data = await r.json()
-         console.log(data)
+         renderList(data)
+         renderForm()
+         faces = data
       } catch (error) { console.error(error) }
    }
    fetchFaces()
 
+   //render faces list data
+   const renderList = (listData) => {
+      const list = listData.map(item => (
+         `      <tr id="${item.id}">
+            <td>${item.id}</td>
+            <td>${item.name}</td>
+            <td>${item.mood}</td>
+            <td>
+               <button type='button' id='edit'> Edit  </button>
+              </td>
+              <td>
+               <button type='button' id='del'> Del  </button>
+            </td>
+         </tr>`
+      ))
+
+
+      //build face list and inject data
+      faceList.innerHTML = `<table>
+            <thead>
+               <tr>
+               <th> ID </th>
+                  <th> Name </th>
+                  <th> Mood </th>
+                  <th> Edit </th>
+                  <th> Del </th>
+               </tr>
+            </thead>
+            <tbody>
+               ${list.join('')}
+            </tbody>
+         </table>`;
+   }
+
+   //build form element
+   const renderForm = () => {
+      const formHtml =
+         `<label for='nameInput'> Name </label>
+         <input type='text' name='name' id='nameInput' placeholder='Enter new name...' />
+         <label for='moodInput'> Mood </label>
+         <input type='text' name='mood' id='moodInput' placeholder='Enter new mood...' />
+         <button type='submit' id='btnSubmit'> Create </button>`
+      faceForm.innerHTML = formHtml
+   }
+
+   //form event listeners
+   faceForm.addEventListener('input', function (e) {
+      const inputs = faceForm.getElementsByTagName('input')
+      for (let input of inputs) {
+         const { id, name, value } = input
+         formData = {
+            ...formData,
+            [name]: value
+         }
+         console.log(formData)
+      }
+   })
 
 
 }
