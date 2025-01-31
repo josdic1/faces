@@ -43,10 +43,10 @@ const init = () => {
             <td>${item.name}</td>
             <td>${item.mood}</td>
             <td>
-               <button type='button' id='edit'> Edit  </button>
+               <button type='button' name='edit' id='edit-${item.id}'>Edit</button>
               </td>
               <td>
-               <button type='button' id='del'> Del  </button>
+               <button type='button' name='del' id='del-${item.id}'>Del</button>
             </td>
          </tr>`
       ))
@@ -69,6 +69,30 @@ const init = () => {
             </tbody>
          </table>`;
    }
+
+
+   //list button event listener
+   faceList.addEventListener('click', function (e) {
+      const { id } = e.target
+      const btn = id.slice(0, 3)
+      const thisId = id.split('-')[1]
+      const payload = faces.find(face => face.id === thisId)
+      if (btn === 'del') {
+         deleteClick(payload)
+      }
+   })
+
+   // creates object and routes it to POST/PATCH
+   const faceFinder = (id) => {
+      const payload = faces.find(face => face.id === id)
+      if (inEditMode) {
+         const nameField = document.getElementById('nameInput')
+         const moodField = document.getElementById('moodInput')
+         nameField.value = payload.name
+         moodField.value = payload.mood
+      }
+   }
+
 
    //build form element
    const renderForm = () => {
@@ -152,9 +176,18 @@ const init = () => {
    }
 
    // delete face PATCH
-   async function updateClick() {
+   async function deleteClick(objToDelete) {
+      const updatedList = faces.filter(face => face.id !== objToDelete.id)
       try {
-
+         const r = await fetch(`http://localhost:3000/faceItems/${objToDelete.id}`, {
+            method: 'DELETE'
+         })
+         if (!r.ok) {
+            throw new Error('error')
+         }
+         const updatedList = faces.filter(face => face.id !== objToDelete.id)
+         renderList(updatedList)
+         faces = updatedList
       } catch (error) { console.error(error) }
    }
 
