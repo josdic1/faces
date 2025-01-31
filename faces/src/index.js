@@ -5,6 +5,9 @@ const init = () => {
 
    //dom elements
    const app = document.getElementById("app")
+   const editMode = document.getElementById("edit-mode")
+   const formPart = document.getElementById("form-part")
+   const selectedPart = document.getElementById("selected-part")
    const btnMenu = document.getElementById("btn-menu")
    const faceForm = document.getElementById("face-form")
    const faceItem = document.getElementById("face-item")
@@ -19,6 +22,14 @@ const init = () => {
       name: '',
       mood: ''
    }
+
+   let selectedFace = {
+      id: '',
+      name: '',
+      mood: ''
+   }
+
+
 
    //fetch faceItems
    async function fetchFaces() {
@@ -77,20 +88,29 @@ const init = () => {
       const btn = id.slice(0, 3)
       const thisId = id.split('-')[1]
       const payload = faces.find(face => face.id === thisId)
-      if (btn === 'del') {
-         deleteClick(payload)
+      if (btn === 'edi') {
+         inEditMode = true
+         populateForm(payload)
+         selectedFace = {
+            ...payload
+         }
+         formData = {
+            name: payload.name || '',
+            mood: payload.mood || ''
+         }
+      } else {
+         if (btn === 'del') {
+            deleteClick(payload)
+         }
       }
    })
 
    // creates object and routes it to POST/PATCH
-   const faceFinder = (id) => {
-      const payload = faces.find(face => face.id === id)
-      if (inEditMode) {
-         const nameField = document.getElementById('nameInput')
-         const moodField = document.getElementById('moodInput')
-         nameField.value = payload.name
-         moodField.value = payload.mood
-      }
+   const populateForm = (face) => {
+      const nameField = document.getElementById('nameInput')
+      const moodField = document.getElementById('moodInput')
+      nameField.value = face.name
+      moodField.value = face.mood
    }
 
 
@@ -109,15 +129,13 @@ const init = () => {
    //form event listeners for inputs
    faceForm.addEventListener('input', function (e) {
       e.preventDefault()
-      const inputs = faceForm.getElementsByTagName('input')
-      for (let input of inputs) {
-         const { name, value } = input
-         formData = {
-            ...formData,
-            [name]: value
-         }
+      const { name, value } = e.target
+      formData = {
+         ...formData,
+         [name]: value
       }
    })
+
 
    //event listener clear button
    faceForm.addEventListener('click', function (e) {
@@ -127,22 +145,41 @@ const init = () => {
 
    // clear form reusable
    function clearForm() {
+      inEditMode = false
       const nameField = document.getElementById('nameInput')
       const moodField = document.getElementById('moodInput')
       nameField.value = ''
       moodField.value = ''
+      formData = {
+         name: '',
+         mood: ''
+      }
+
+      selectedFace = {
+         id: '',
+         name: '',
+         mood: ''
+      }
    }
+
 
    // submit button event listener
    faceForm.addEventListener('submit', function (e) {
       e.preventDefault()
-      const payload = {
-         name: formData.name.toLowerCase(),
-         mood: formData.mood.toLowerCase()
-      }
+      const nameField = document.getElementById('nameInput')
+      const moodField = document.getElementById('moodInput')
       if (inEditMode) {
-         console.log('form submit in editmode')
+         const payload = {
+            ...selectedFace,
+            name: nameField.value === selectedFace.name ? selectedFace.name : nameField.value,
+            mood: moodField.value === selectedFace.mood ? selectedFace.mood : moodField.value
+         }
+         updateClick(payload)
+         clearForm()
       } else {
+         const payload = {
+            ...formData
+         }
          createClick(payload)
          clearForm()
       }
@@ -163,15 +200,29 @@ const init = () => {
          }
          const data = await r.json()
          const updatedList = [...faces, data]
-         renderList(updatedList)
+         fetchFaces(updatedList)
 
       } catch (error) { console.error(error) }
    }
 
    // update face PATCH
-   async function updateClick() {
-      try {
+   async function updateClick(objToUpdate) {
 
+      try {
+         const r = await fetch(`http://localhost:3000/faceItems/${objToUpdate.id}`, {
+            method: 'PATCH',
+            headers: {
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(objToUpdate)
+         })
+         if (!r.ok) {
+            throw new Error('error')
+         }
+         const data = await r.json()
+         const updatedList = faces.map(face => face.id === data.id ? data : face)
+         renderList(updatedList)
+         clearForm()
       } catch (error) { console.error(error) }
    }
 
