@@ -73,7 +73,20 @@ const init = () => {
 
   function handleAddToCartClick(e) {
     const { id, name } = e.target
-    console.log(id, name)
+    console.log(name, id)
+    const itemObj = items.find(item => (
+      item.id === id
+    ))
+    console.log(itemObj)
+    if (name === 'add') {
+      selectedItem = {
+        ...selectedItem,
+        name: itemObj.name,
+        price: itemObj.price
+      }
+      const newItem = selectedItem
+      addToCart(newItem)
+    }
   }
 
   // CART
@@ -118,12 +131,12 @@ const init = () => {
   function renderPayment() {
     const paymentHtml =
       `<form id="form">
-        <input type="text" class="form-input" id="name" placeholder="Cardholder name..." />
-         <input type="text" class="form-input" id="ccNumber" placeholder="Card #..." />
-        <input type="date" class="form-input" id="exp"  />
-          <input type="text" class="form-input" id="cvv"  /><br>
-          <button type="submit" class="form-input button" id="submit">🛒 Checkout</button>
-          <button type="button" class="form-input button" id="cancel">Cancel</button>
+        <input type="text" class="form-input" name="name" placeholder="Cardholder name..." />
+         <input type="text" class="form-input" name="ccNumber" placeholder="Card #..." />
+        <input type="date" class="form-input" name="exp"  />
+          <input type="text" class="form-input" name="cvv"  /><br>
+          <button type="submit" class="form-input button" name="submit">🛒 Checkout</button>
+          <button type="button" class="form-input button" name="cancel">Cancel</button>
       </form>`
 
     payment.innerHTML = paymentHtml
@@ -135,19 +148,26 @@ const init = () => {
   }
 
   // payment handler functions
-  function handleFormInpute) {
-
+  function handleFormInput(e) {
+    const { name, value } = e.target
+    ccFormData = {
+      ...ccFormData,
+      [name]: value
+    }
+    const paymentForm = ccFormData
+    console.log(paymentForm)
   }
 
 
 
 
   // async CRUD
+  //<----- fetch items ---->
   async function fetchItems() {
     try {
       const r = await fetch(`http://localhost:3000/items`)
       if (!r.ok) {
-        throw new Error('GET: bad fetch')
+        throw new Error('GET: bad fetch populating item list')
       }
       const data = await r.json()
       items = data
@@ -157,11 +177,12 @@ const init = () => {
     } catch (error) { console.error(error) }
   }
 
+  //<----- fetch cart contents ---->
   async function fetchCart() {
     try {
       const r = await fetch(`http://localhost:3000/cartItems`)
       if (!r.ok) {
-        throw new Error('GET: bad fetch')
+        throw new Error('GET: bad fetch populating cart')
       }
       const data = await r.json()
       cartItems = data
@@ -169,7 +190,25 @@ const init = () => {
     } catch (error) { console.error(error) }
   }
 
-
+  //<----- add items to cart ---->
+  async function addToCart(itemToAdd) {
+    try {
+      const r = await fetch(`http://localhost:3000/cartItems/${itemToAdd.id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(itemToAdd)
+      })
+      if (!r.ok) {
+        throw new Error('POST: bad fetch while adding item to cart')
+      }
+      const newItem = await r.json()
+      const updatedCart = [...cartItems, newItem]
+      cartItems = updatedCart
+      renderCart(updatedCart)
+    } catch (error) { console.error(error) }
+  }
 }
 
 window.addEventListener('DOMContentLoaded', init)

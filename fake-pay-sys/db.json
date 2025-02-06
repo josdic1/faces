@@ -1,50 +1,111 @@
 {
-   "items": [
-      {
-         "name": "Wireless Mouse",
-         "price": 25.99
-      },
-      {
-         "name": "Mechanical Keyboard",
-         "price": 89.99
-      },
-      {
-         "name": "USB-C Charger",
-         "price": 19.99
-      },
-      {
-         "name": "Bluetooth Headphones",
-         "price": 59.99
-      },
-      {
-         "name": "Gaming Monitor",
-         "price": 249.99
-      },
-      {
-         "name": "Smartphone Stand",
-         "price": 14.99
-      },
-      {
-         "name": "External Hard Drive",
-         "price": 129.99
-      },
-      {
-         "name": "LED Desk Lamp",
-         "price": 39.99
-      },
-      {
-         "name": "Ergonomic Office Chair",
-         "price": 199.99
-      },
-      {
-         "name": "Noise-Canceling Earbuds",
-         "price": 79.99
-      }
-   ],
-   "cartItems": [
-      {
-         "name": "USB-C Charger",
-         "price": 19.99
-      }
-   ]
+  "items": [
+    {
+      "name": "Wireless Mouse",
+      "price": 25.99,
+      "id": "8094"
+    },
+    {
+      "name": "Mechanical Keyboard",
+      "price": 89.99,
+      "id": "5b71"
+    },
+    {
+      "name": "USB-C Charger",
+      "price": 19.99,
+      "id": "0c6d"
+    },
+    {
+      "name": "Bluetooth Headphones",
+      "price": 59.99,
+      "id": "d7b7"
+    },
+    {
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "id": "570d"
+    },
+    {
+      "name": "Smartphone Stand",
+      "price": 14.99,
+      "id": "12b7"
+    },
+    {
+      "name": "External Hard Drive",
+      "price": 129.99,
+      "id": "b0a5"
+    },
+    {
+      "name": "LED Desk Lamp",
+      "price": 39.99,
+      "id": "5256"
+    },
+    {
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "id": "7d91"
+    },
+    {
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "id": "ef3b"
+    }
+  ],
+  "cartItems": [
+    {
+      "name": "USB-C Charger",
+      "price": 19.99,
+      "id": "08e9"
+    },
+    {
+      "id": "",
+      "name": "",
+      "price": 0
+    },
+    {
+      "id": "",
+      "name": "",
+      "price": 0
+    },
+    {
+      "id": "",
+      "name": "Mechanical Keyboard",
+      "price": 89.99
+    },
+    {
+      "id": "",
+      "name": "USB-C Charger",
+      "price": 19.99
+    },
+    {
+      "id": "",
+      "name": "USB-C Charger",
+      "price": 19.99
+    },
+    {
+      "id": "",
+      "name": "USB-C Charger",
+      "price": 19.99
+    },
+    {
+      "id": "",
+      "name": "Mechanical Keyboard",
+      "price": 89.99
+    },
+    {
+      "id": "",
+      "name": "Gaming Monitor",
+      "price": 249.99
+    },
+    {
+      "id": "",
+      "name": "Smartphone Stand",
+      "price": 14.99
+    },
+    {
+      "id": "",
+      "name": "External Hard Drive",
+      "price": 129.99
+    }
+  ]
 }
