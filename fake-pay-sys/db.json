@@ -1,0 +1,44 @@
+{
+   "items": [
+      {
+         "name": "Wireless Mouse",
+         "price": 25.99
+      },
+      {
+         "name": "Mechanical Keyboard",
+         "price": 89.99
+      },
+      {
+         "name": "USB-C Charger",
+         "price": 19.99
+      },
+      {
+         "name": "Bluetooth Headphones",
+         "price": 59.99
+      },
+      {
+         "name": "Gaming Monitor",
+         "price": 249.99
+      },
+      {
+         "name": "Smartphone Stand",
+         "price": 14.99
+      },
+      {
+         "name": "External Hard Drive",
+         "price": 129.99
+      },
+      {
+         "name": "LED Desk Lamp",
+         "price": 39.99
+      },
+      {
+         "name": "Ergonomic Office Chair",
+         "price": 199.99
+      },
+      {
+         "name": "Noise-Canceling Earbuds",
+         "price": 79.99
+      }
+   ]
+}
