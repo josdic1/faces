@@ -73,11 +73,9 @@ const init = () => {
 
   function handleAddToCartClick(e) {
     const { id, name } = e.target
-    console.log(name, id)
     const itemObj = items.find(item => (
       item.id === id
     ))
-    console.log(itemObj)
     if (name === 'add') {
       selectedItem = {
         ...selectedItem,
