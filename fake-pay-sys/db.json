@@ -40,5 +40,11 @@
          "name": "Noise-Canceling Earbuds",
          "price": 79.99
       }
+   ],
+   "cartItems": [
+      {
+         "name": "USB-C Charger",
+         "price": 19.99
+      }
    ]
 }

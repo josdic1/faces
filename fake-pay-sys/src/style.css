@@ -69,7 +69,7 @@ button:hover {
 #payment {
   grid-column: 2 / 3; /* Right column */
   grid-row: 2; /* Second row */
-  background: #6c6c6c;
+  background: #d5effa;
   border: 1px solid #999;
 }
 
@@ -78,6 +78,12 @@ button:hover {
   grid-row: 3; /* Third row */
   background: #fffefe;
   border: 1px solid #999;
+  color: #456234;
+}
+
+.form-input {
+  background-color: rgb(253, 255, 232);
+  color: #232324
 }
 
 /* Optional: Add padding for content visibility */
