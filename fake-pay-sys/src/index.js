@@ -152,7 +152,7 @@ const init = () => {
         <input type="text" class="form-input" name="name" placeholder="Cardholder name..." />
          <input type="text" class="form-input" name="ccNumber" placeholder="Card #..." />
         <input type="date" class="form-input" name="exp"  />
-          <input type="text" class="form-input" name="cvv"  /><br>
+          <input type="text" class="form-input" name="cvv" placeholder="CVV..." /><br>
           <button type="submit" class="form-input button" name="submit">🛒 Checkout</button>
           <button type="button" class="form-input button" name="cancel">Cancel</button>
       </form>`
