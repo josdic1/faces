@@ -14,7 +14,8 @@ const init = () => {
   let cartItems = []
   let itemFormData = {
     name: '',
-    price: 0
+    price: 0,
+    itemId: ''
   }
   let ccFormData = {
     name: '',
@@ -76,14 +77,15 @@ const init = () => {
     const itemObj = items.find(item => (
       item.id === id
     ))
+
     if (name === 'add') {
-      selectedItem = {
-        ...selectedItem,
+      const newItemToAdd = {
         name: itemObj.name,
-        price: itemObj.price
+        price: itemObj.price,
+        itemId: itemObj.id
       }
-      const newItem = selectedItem
-      addToCart(newItem)
+      itemFormData = newItemToAdd
+      addToCart(newItemToAdd)
     }
   }
 
@@ -97,9 +99,9 @@ const init = () => {
         <td>${cItem.id}</td>
         <td>${cItem.name}</td>
         <td>${cItem.price}</td>
-         <td>#</td>
+         <td>${cItem.itemId}</td>
         <td>
-          <button type="button" class="list-button remove" id="${cItem.id}" name="remove">Remove</button>
+          <button type="button" class="list-button remove" id="${cItem.id}" name= "remove" >Remove</button>
         </td>
       </tr>`
     ))
@@ -124,6 +126,24 @@ const init = () => {
       </table>`
 
     cart.innerHTML = cartHtml
+
+    cart.querySelectorAll('.remove').forEach(btn => {
+      btn.addEventListener('click', handleRemoveClick)
+    })
+  }
+
+  //<---cart handler functions --->
+  function handleRemoveClick(e) {
+    const { id, name } = e.target
+    if (name === 'remove') {
+      const itemToRemove = cartItems.find(i => (
+        i.id === id
+      ))
+      const updatedCart = cartItems.filter(j => (
+        j.id !== itemToRemove.id
+      ))
+      removeItem(updatedCart, id)
+    }
   }
 
   function renderPayment() {
@@ -191,7 +211,7 @@ const init = () => {
   //<----- add items to cart ---->
   async function addToCart(itemToAdd) {
     try {
-      const r = await fetch(`http://localhost:3000/cartItems/${itemToAdd.id}`, {
+      const r = await fetch(`http://localhost:3000/cartItems`, {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"
@@ -205,6 +225,21 @@ const init = () => {
       const updatedCart = [...cartItems, newItem]
       cartItems = updatedCart
       renderCart(updatedCart)
+      fetchItems()
+    } catch (error) { console.error(error) }
+  }
+
+
+  //<----- delete item from cart  ---->
+  async function removeItem(list, itemId) {
+    try {
+      const r = await fetch(`http://localhost:3000/cartItems/${itemId}`, {
+        method: 'DELETE'
+      })
+      if (!r.ok) {
+        throw new Error('DELETE: bad fetch while removing item from cart')
+      }
+      await fetchItems()
     } catch (error) { console.error(error) }
   }
 }
