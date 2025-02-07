@@ -87,10 +87,7 @@ const init = () => {
         itemId: itemObj.id
       }
       itemFormData = newItemToAdd
-      const cartItemsShadow = cartItems
-
-
-
+      addToCart(newItemToAdd)
     }
   }
 
@@ -115,9 +112,14 @@ const init = () => {
     let total = 0;
     const cartItemsPriceTotal = cItems.reduce((accum, item) => item.price + accum, total)
 
+    const uniqueItemNames = new Set(cItems.map(item => item.name));
+
+    console.log(uniqueItemNames);
+
+
     const cartHtml =
       `
-      <h1>My Cart: ${cartItems.length + " items"} (total: $${parseInt(cartItemsPriceTotal)})</h1>
+      <h1>My Cart: ${cartItems.length + " items"} (total: $${parseInt(cartItemsPriceTotal, 10)})</h1>
       <table id="myCart">
         <thead>
           <tr>

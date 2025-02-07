@@ -51,5 +51,384 @@
       "id": "ef3b"
     }
   ],
-  "cartItems": []
+  "cartItems": [
+    {
+      "id": "7540",
+      "name": "Mechanical Keyboard",
+      "price": 89.99,
+      "itemId": "5b71"
+    },
+    {
+      "id": "9abe",
+      "name": "Mechanical Keyboard",
+      "price": 89.99,
+      "itemId": "5b71"
+    },
+    {
+      "id": "5d48",
+      "name": "LED Desk Lamp",
+      "price": 39.99,
+      "itemId": "5256"
+    },
+    {
+      "id": "5b69",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "cb18",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "d360",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "8932",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "8092",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "e8d1",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "c039",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "3255",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "9348",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "60be",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "22c0",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "9252",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "da72",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "d12e",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "b924",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "31f4",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "fb0e",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "2449",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "b23c",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "01c6",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "fb10",
+      "name": "Bluetooth Headphones",
+      "price": 59.99,
+      "itemId": "d7b7"
+    },
+    {
+      "id": "d970",
+      "name": "Bluetooth Headphones",
+      "price": 59.99,
+      "itemId": "d7b7"
+    },
+    {
+      "id": "af53",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "a63b",
+      "name": "Smartphone Stand",
+      "price": 14.99,
+      "itemId": "12b7"
+    },
+    {
+      "id": "4ff7",
+      "name": "External Hard Drive",
+      "price": 129.99,
+      "itemId": "b0a5"
+    },
+    {
+      "id": "60b3",
+      "name": "External Hard Drive",
+      "price": 129.99,
+      "itemId": "b0a5"
+    },
+    {
+      "id": "ba61",
+      "name": "External Hard Drive",
+      "price": 129.99,
+      "itemId": "b0a5"
+    },
+    {
+      "id": "2364",
+      "name": "External Hard Drive",
+      "price": 129.99,
+      "itemId": "b0a5"
+    },
+    {
+      "id": "34c7",
+      "name": "External Hard Drive",
+      "price": 129.99,
+      "itemId": "b0a5"
+    },
+    {
+      "id": "7e61",
+      "name": "External Hard Drive",
+      "price": 129.99,
+      "itemId": "b0a5"
+    },
+    {
+      "id": "348e",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "5435",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "fff7",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "2894",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "15c3",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "cbc4",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "64db",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "7f75",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "a364",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "29d1",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "64a0",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "94f5",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "a290",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "d632",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "147a",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "87fa",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "2be3",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "f59d",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "3c1c",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "c8bd",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "15ee",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "753e",
+      "name": "Ergonomic Office Chair",
+      "price": 199.99,
+      "itemId": "7d91"
+    },
+    {
+      "id": "73ce",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "967f",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "8316",
+      "name": "Noise-Canceling Earbuds",
+      "price": 79.99,
+      "itemId": "ef3b"
+    },
+    {
+      "id": "55f4",
+      "name": "Smartphone Stand",
+      "price": 14.99,
+      "itemId": "12b7"
+    },
+    {
+      "id": "265d",
+      "name": "Smartphone Stand",
+      "price": 14.99,
+      "itemId": "12b7"
+    },
+    {
+      "id": "9a8d",
+      "name": "Bluetooth Headphones",
+      "price": 59.99,
+      "itemId": "d7b7"
+    },
+    {
+      "id": "b470",
+      "name": "Smartphone Stand",
+      "price": 14.99,
+      "itemId": "12b7"
+    },
+    {
+      "id": "7a7c",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    }
+  ]
 }
