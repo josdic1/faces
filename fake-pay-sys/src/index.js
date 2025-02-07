@@ -109,12 +109,17 @@ const init = () => {
       </tr>`
     ))
 
-    let total = 0;
-    const cartItemsPriceTotal = cItems.reduce((accum, item) => item.price + accum, total)
+    let priceTotal = 0;
+    const cartItemsPriceTotal = cItems.reduce((accum, item) => item.price + accum, priceTotal)
 
-    const uniqueItemNames = new Set(cItems.map(item => item.name));
+    const uniqueCartItemNames = new Set(cartItems.map(item => item.name));
 
-    console.log(uniqueItemNames);
+    const uniqueCartItemNamesQuanitites = [...uniqueCartItemNames].map(cI => {
+      const quantity = cartItems.filter(cartItems => cartItems.name === cI).length;
+      let total = 0
+      const itemPriceTotal = cartItems.filter(cartItems => cartItems.name === cI).reduce((sum, item) => sum += item.cartItemsPriceTotal, total)
+      return (quantity, itemPriceTotal)
+    })
 
 
     const cartHtml =

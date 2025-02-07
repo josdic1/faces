@@ -429,6 +429,90 @@
       "name": "Gaming Monitor",
       "price": 249.99,
       "itemId": "570d"
+    },
+    {
+      "id": "b155",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "7d57",
+      "name": "USB-C Charger",
+      "price": 19.99,
+      "itemId": "0c6d"
+    },
+    {
+      "id": "82e0",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "3c46",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "5e32",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "50f7",
+      "name": "Mechanical Keyboard",
+      "price": 89.99,
+      "itemId": "5b71"
+    },
+    {
+      "id": "9146",
+      "name": "Smartphone Stand",
+      "price": 14.99,
+      "itemId": "12b7"
+    },
+    {
+      "id": "f565",
+      "name": "External Hard Drive",
+      "price": 129.99,
+      "itemId": "b0a5"
+    },
+    {
+      "id": "2322",
+      "name": "LED Desk Lamp",
+      "price": 39.99,
+      "itemId": "5256"
+    },
+    {
+      "id": "94b4",
+      "name": "Smartphone Stand",
+      "price": 14.99,
+      "itemId": "12b7"
+    },
+    {
+      "id": "b2ae",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "414b",
+      "name": "Smartphone Stand",
+      "price": 14.99,
+      "itemId": "12b7"
+    },
+    {
+      "id": "81e3",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
+    },
+    {
+      "id": "0711",
+      "name": "Gaming Monitor",
+      "price": 249.99,
+      "itemId": "570d"
     }
   ]
 }
