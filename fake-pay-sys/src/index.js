@@ -122,12 +122,9 @@ const init = () => {
           <td>${uItem}</td>
             <td>${quantity}</td>
               <td>${totals}</td>
-               <td><button id='removeFromTable' style="color: black"> - </button></td>
+
         </tr>`
       return cartTableRow
-
-
-      document.getElementById('removeFromTable').addEventListener('click', handleAddToCartClick())
     })
 
 
@@ -141,8 +138,6 @@ const init = () => {
           <tr>
             <th>Name</th>
             <th>#</th>
-            <th>tot.$</th>
-            <th>btn</th>
           </tr>
         </thead>
         <tbody>
