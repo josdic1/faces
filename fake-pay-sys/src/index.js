@@ -109,31 +109,54 @@ const init = () => {
       </tr>`
     ))
 
-    let priceTotal = 0;
-    const cartItemsPriceTotal = cItems.reduce((accum, item) => item.price + accum, priceTotal)
+    const cartItemsPriceTotal = cartItems.reduce((accum, cartItem) => cartItem.price + accum, 0)
 
-    const uniqueCartItemNames = new Set(cartItems.map(item => item.name));
+    const uniqueCardItemNames = new Set(cartItems.map(cartItem => cartItem.name))
+    const cartTableData = [...uniqueCardItemNames].map(uItem => {
 
-    const uniqueCartItemNamesQuanitites = [...uniqueCartItemNames].map(cI => {
-      const quantity = cartItems.filter(cartItems => cartItems.name === cI).length;
-      let total = 0
-      const itemPriceTotal = cartItems.filter(cartItems => cartItems.name === cI).reduce((sum, item) => sum += item.cartItemsPriceTotal, total)
-      return (quantity, itemPriceTotal)
+      const quantity = cartItems.filter(cItem => cItem.name === uItem).length
+      const totals = cartItems.filter(cItem => cItem.name === uItem)
+        .reduce((count, it) => it.price + count, 0).toFixed(2)
+      const cartTableRow =
+        `<tr>
+          <td>${uItem}</td>
+            <td>${quantity}</td>
+              <td>${totals}</td>
+               <td><button id='removeFromTable' style="color: black"> - </button></td>
+        </tr>`
+      return cartTableRow
+
+
+      document.getElementById('removeFromTable').addEventListener('click', handleAddToCartClick())
     })
+
+
 
 
     const cartHtml =
       `
-      <h1>My Cart: ${cartItems.length + " items"} (total: $${parseInt(cartItemsPriceTotal, 10)})</h1>
+      <h1>My Cart: ${cartItems.length + " items"} (total: $${cartItemsPriceTotal.toFixed(2)})</h1>
+          <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>#</th>
+            <th>tot.$</th>
+            <th>btn</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${cartTableData.join('')}
+        </tbody>
+      </table>
       <table id="myCart">
         <thead>
           <tr>
             <th>ID</th>
             <th>NAME</th>
             <th>$</th>
-            <th>Quantity</th>
+            <th>Item Id</th>
             <th>𝕏</th>
-            
           </tr>
         </thead>
         <tbody>
@@ -146,6 +169,7 @@ const init = () => {
     cart.querySelectorAll('.remove').forEach(btn => {
       btn.addEventListener('click', handleRemoveClick)
     })
+
   }
 
   //<---cart handler functions --->
