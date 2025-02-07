@@ -62,6 +62,8 @@ const init = () => {
       </tbody>
     </table>`
 
+
+
     list.innerHTML = listHtml
 
     list.querySelectorAll('.list-button.add').forEach(btn => (
@@ -85,9 +87,13 @@ const init = () => {
         itemId: itemObj.id
       }
       itemFormData = newItemToAdd
-      addToCart(newItemToAdd)
+      const cartItemsShadow = cartItems
+
+
+
     }
   }
+
 
   // CART
   //<---- render cart ---->
@@ -106,9 +112,12 @@ const init = () => {
       </tr>`
     ))
 
+    let total = 0;
+    const cartItemsPriceTotal = cItems.reduce((accum, item) => item.price + accum, total)
+
     const cartHtml =
       `
-      <h1>My Cart (${cartItems.length + " items"})</h1>
+      <h1>My Cart: ${cartItems.length + " items"} (total: $${parseInt(cartItemsPriceTotal)})</h1>
       <table id="myCart">
         <thead>
           <tr>
