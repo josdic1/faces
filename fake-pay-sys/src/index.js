@@ -1,37 +1,79 @@
 const init = () => {
 
   // dom elements
-  const menu = document.getElementById('menu')
+  const navbar = document.getElementById('navbar')
   const filter = document.getElementById('filter')
   const list = document.getElementById('list')
-  const payment = document.getElementById('payment')
+  const transaction = document.getElementById('transaction')
   const cart = document.getElementById('cart')
 
   // stateful variables
-  let isLoading = true
-  let inEditMode = false
   let items = []
-  let cartItems = []
-  let transactions = []
-  let itemFormData = {
-    name: '',
-    price: 0,
-    itemId: ''
-  }
-  let ccFormData = {
-    name: '',
-    ccNumber: '',
-    exp: '',
-    cvv: ''
-  }
+
   let selectedItem = {
     id: '',
     name: '',
     price: 0
   }
 
+  let cartItems = []
+  let transactions = []
+
+  let itemFormObj = {
+    name: '',
+    price: 0,
+    itemId: ''
+  }
+
+  let ccFormObj = {
+    name: '',
+    ccNumber: '',
+    exp: '',
+    cvv: ''
+  }
+
   // initial fetch
   fetchItems()
+
+  const jsonData = [
+    { id: 1, name: "Alice", age: 25 },
+    { id: 2, name: "Bob", age: 30 },
+    { id: 3, name: "Charlie", age: 35 },
+  ];
+
+  const createTable = (data) => {
+    let headerHtml;
+    let bodyHtml;
+
+    const headers = Object.keys(data[0])
+    headerHtml = headers.map(header => (
+      `<th>${header}</th>`
+    ))
+
+    const listItemCount = data.length
+    let i;
+    for (i = 0; i = listItemCount; i++) {
+      data.map(item => (
+
+      ))
+    }
+
+    const tableHtml = `<thead>
+        <tr>
+        ${headerHtml.join('')}
+        </tr>
+      </thead>
+       <tbody>
+
+    </tbody>
+      `
+
+    transaction.innerHTML = tableHtml
+    console.log("listItemCount: ", listItemCount)
+    console.log("bodyHtml: ", bodyHtml)
+  }
+
+
 
   // LIST
   //<---- render list ---->
@@ -87,7 +129,7 @@ const init = () => {
         price: itemObj.price,
         itemId: itemObj.id
       }
-      itemFormData = newItemToAdd
+      itemFormObj = newItemToAdd
       addToCart(newItemToAdd)
     }
   }
@@ -95,154 +137,6 @@ const init = () => {
 
   // CART
   //<---- render cart ---->
-  function renderCart(cItems) {
-    menu.textContent = cItems.length
-
-    const cartItemsList = cItems.map(cItem => (
-      `<tr id="${cItem.id}">
-        <td>${cItem.id}</td>
-        <td>${cItem.name}</td>
-        <td>${cItem.price}</td>
-         <td>${cItem.itemId}</td>
-        <td>
-          <button type="button" class="list-button remove" id="${cItem.id}" name= "remove" >Remove</button>
-        </td>
-      </tr>`
-    ))
-
-    const cartItemsPriceTotal = cartItems.reduce((accum, cartItem) => cartItem.price + accum, 0)
-
-    const uniqueCardItemNames = new Set(cartItems.map(cartItem => cartItem.name))
-    const cartTableData = [...uniqueCardItemNames].map(uItem => {
-
-      const quantity = cartItems.filter(cItem => cItem.name === uItem).length
-      const totals = cartItems.filter(cItem => cItem.name === uItem)
-        .reduce((count, it) => it.price + count, 0).toFixed(2)
-      const cartTableRow =
-        `<tr>
-          <td>${uItem}</td>
-            <td>${quantity}</td>
-              <td>${totals}</td>
-
-        </tr>`
-      return cartTableRow
-    })
-
-
-
-
-    const cartHtml =
-      `
-      <h1>My Cart: ${cartItems.length + " items"} (total: $${cartItemsPriceTotal.toFixed(2)})</h1>
-          <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>#</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${cartTableData.join('')}
-        </tbody>
-      </table>
-      <table id="myCart">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>$</th>
-            <th>Item Id</th>
-            <th>𝕏</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${cartItemsList.join('')}
-        </tbody>
-      </table>`
-
-    cart.innerHTML = cartHtml
-
-    cart.querySelectorAll('.remove').forEach(btn => {
-      btn.addEventListener('click', handleRemoveClick)
-    })
-
-  }
-
-  //<---cart handler functions --->
-  function handleRemoveClick(e) {
-    const { id, name } = e.target
-    if (name === 'remove') {
-      const itemToRemove = cartItems.find(i => (
-        i.id === id
-      ))
-      const updatedCart = cartItems.filter(j => (
-        j.id !== itemToRemove.id
-      ))
-      removeItem(updatedCart, id)
-    }
-  }
-
-  function renderPayment() {
-    const paymentHtml =
-      `<form id="form">
-        <input type="text" class="form-input" name="name" placeholder="Cardholder name..." />
-         <input type="text" class="form-input" name="ccNumber" placeholder="Card #..." />
-        <input type="date" class="form-input" name="exp"  />
-          <input type="text" class="form-input" name="cvv" placeholder="CVV..." /><br>
-          <button type="submit" class="form-input button" name="submit">🛒 Checkout</button>
-          <button type="button" class="form-input button" name="cancel">Cancel</button>
-      </form>`
-
-    payment.innerHTML = paymentHtml
-
-    payment.querySelectorAll('.form-input').forEach(input => {
-      input.addEventListener("input", handleFormInput)
-    })
-
-    form.addEventListener('submit', submitPayment)
-
-  }
-
-  // payment handler functions
-  function handleFormInput(e) {
-    const { name, value } = e.target
-    ccFormData = {
-      ...ccFormData,
-      [name]: value
-    }
-  }
-
-  function submitPayment(e) {
-    e.preventDefault()
-    const paymentData = ccFormData
-    if (paymentData.name === "") {
-      menu.textContent = "Name Missing"
-    } else {
-      if (paymentData.ccNumber.length <= 0) {
-        menu.textContent = "CC Number Incorrect"
-      }
-      else {
-        if (paymentData.exp === "") {
-          menu.textContent = "Date Incorrect"
-        } else {
-          if (paymentData.cvv.length !== 3) {
-            menu.textContent = "Bad CVV"
-          } else {
-            const payData = {
-              name: paymentData.name,
-              ccNumber: paymentData.ccNumber,
-              exp: paymentData.exp,
-              cvv: paymentData.cvv
-            }
-            ccFormData = payData
-            addTransaction(payData)
-          }
-        }
-      }
-    }
-  }
-
-
 
 
   // async CRUD
@@ -256,8 +150,7 @@ const init = () => {
       const data = await r.json()
       items = data
       renderList(data)
-      fetchCart()
-      renderPayment()
+
     } catch (error) { console.error(error) }
   }
 
@@ -270,7 +163,6 @@ const init = () => {
       }
       const data = await r.json()
       cartItems = data
-      renderCart(data)
     } catch (error) { console.error(error) }
   }
 
@@ -290,7 +182,6 @@ const init = () => {
       const newItem = await r.json()
       const updatedCart = [...cartItems, newItem]
       cartItems = updatedCart
-      renderCart(updatedCart)
       fetchItems()
     } catch (error) { console.error(error) }
   }

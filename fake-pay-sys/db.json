@@ -51,7 +51,38 @@
       "id": "ef3b"
     }
   ],
-  "cartItems": [],
+  "cartItems": [
+    {
+      "id": "e028",
+      "name": "Wireless Mouse",
+      "price": 25.99,
+      "itemId": "8094"
+    },
+    {
+      "id": "e9f0",
+      "name": "Mechanical Keyboard",
+      "price": 89.99,
+      "itemId": "5b71"
+    },
+    {
+      "id": "81c0",
+      "name": "Wireless Mouse",
+      "price": 25.99,
+      "itemId": "8094"
+    },
+    {
+      "id": "0420",
+      "name": "Mechanical Keyboard",
+      "price": 89.99,
+      "itemId": "5b71"
+    },
+    {
+      "id": "6b1e",
+      "name": "USB-C Charger",
+      "price": 19.99,
+      "itemId": "0c6d"
+    }
+  ],
   "transactions": [
     {
       "ccName": "Josh Dicker",
