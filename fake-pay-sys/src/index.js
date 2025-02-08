@@ -12,6 +12,7 @@ const init = () => {
   let inEditMode = false
   let items = []
   let cartItems = []
+  let transactions = []
   let itemFormData = {
     name: '',
     price: 0,
@@ -198,6 +199,8 @@ const init = () => {
       input.addEventListener("input", handleFormInput)
     })
 
+    form.addEventListener('submit', submitPayment)
+
   }
 
   // payment handler functions
@@ -207,8 +210,36 @@ const init = () => {
       ...ccFormData,
       [name]: value
     }
-    const paymentForm = ccFormData
-    console.log(paymentForm)
+  }
+
+  function submitPayment(e) {
+    e.preventDefault()
+    const paymentData = ccFormData
+    if (paymentData.name === "") {
+      menu.textContent = "Name Missing"
+    } else {
+      if (paymentData.ccNumber.length <= 0) {
+        menu.textContent = "CC Number Incorrect"
+      }
+      else {
+        if (paymentData.exp === "") {
+          menu.textContent = "Date Incorrect"
+        } else {
+          if (paymentData.cvv.length !== 3) {
+            menu.textContent = "Bad CVV"
+          } else {
+            const payData = {
+              name: paymentData.name,
+              ccNumber: paymentData.ccNumber,
+              exp: paymentData.exp,
+              cvv: paymentData.cvv
+            }
+            ccFormData = payData
+            addTransaction(payData)
+          }
+        }
+      }
+    }
   }
 
 
@@ -274,6 +305,26 @@ const init = () => {
       if (!r.ok) {
         throw new Error('DELETE: bad fetch while removing item from cart')
       }
+      await fetchItems()
+    } catch (error) { console.error(error) }
+  }
+
+  //<----- add transaction ---->
+  async function addTransaction(obj) {
+    try {
+      const r = await fetch(`http://localhost:3000/transactions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(obj)
+      })
+      if (!r.ok) {
+        throw new Error('POST: bad fetch while adding transaction')
+      }
+      const newTransaction = await r.json()
+      const updatedTransactions = [...transactions, newTransaction]
+      transactions = updatedTransactions
       await fetchItems()
     } catch (error) { console.error(error) }
   }
