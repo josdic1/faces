@@ -12,14 +12,10 @@
     "vite": "^6.1.0"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.8.1",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "json-server": "^0.17.0",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
-    "framer-motion": "^12.4.5",
-    "json-server": "^1.0.0-beta.3",
     "lodash": "^4.17.21",
-    "lowdb": "^7.0.1"
+    "lowdb": "^1.0.0"
   }
 }

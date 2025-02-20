@@ -1,0 +1,25 @@
+<svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 256 256" 
+    width="256" 
+    height="256" 
+    stroke="white" 
+    fill="none" 
+    stroke-width="3"
+>
+    <!-- Outer Circle -->
+    <circle cx="128" cy="128" r="90" stroke="white" stroke-width="3" fill="none"/>
+
+    <!-- Latitude Lines -->
+    <ellipse cx="128" cy="128" rx="85" ry="40"/>
+    <ellipse cx="128" cy="128" rx="85" ry="20"/>
+
+    <!-- Longitude Lines -->
+    <path d="M128 38 Q180 128 128 218" />
+    <path d="M128 38 Q76 128 128 218" />
+    <path d="M38 128 H218" />
+
+    <!-- Axis Stand -->
+    <line x1="128" y1="38" x2="128" y2="20" stroke-width="4"/>
+    <line x1="128" y1="218" x2="128" y2="236" stroke-width="4"/>
+</svg>
